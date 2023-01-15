@@ -1,0 +1,3787 @@
+[
+    {
+        "id": "adb90767e39e372b",
+        "type": "subflow",
+        "name": "Comment-indiko",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 50,
+                "y": 30,
+                "wires": [
+                    {
+                        "id": "337a90e99776fddd"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1140,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "6a70b3b8a41129ed",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "037a1a6822872030",
+        "type": "join",
+        "z": "adb90767e39e372b",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 770,
+        "y": 220,
+        "wires": [
+            [
+                "6a70b3b8a41129ed"
+            ]
+        ]
+    },
+    {
+        "id": "337a90e99776fddd",
+        "type": "split",
+        "z": "adb90767e39e372b",
+        "name": "",
+        "splt": "|",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "57ee85173c71f3b9"
+            ]
+        ]
+    },
+    {
+        "id": "7a8100d276fbdbde",
+        "type": "change",
+        "z": "adb90767e39e372b",
+        "name": "Index 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recordType\":\"C\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "037a1a6822872030"
+            ]
+        ]
+    },
+    {
+        "id": "57ee85173c71f3b9",
+        "type": "switch",
+        "z": "adb90767e39e372b",
+        "name": "Switch Index",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 5,
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "7a8100d276fbdbde"
+            ],
+            [
+                "537fecfff34924aa"
+            ],
+            [
+                "9f73f29de6354ca5"
+            ],
+            [
+                "8992823175b7aa34"
+            ],
+            [
+                "19552e6818a4acd9"
+            ]
+        ]
+    },
+    {
+        "id": "537fecfff34924aa",
+        "type": "change",
+        "z": "adb90767e39e372b",
+        "name": "index 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t\t       \"sequenceNumber\": payload\t\t\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 200,
+        "wires": [
+            [
+                "037a1a6822872030"
+            ]
+        ]
+    },
+    {
+        "id": "9f73f29de6354ca5",
+        "type": "change",
+        "z": "adb90767e39e372b",
+        "name": "index 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t\t       \"commentSource\": payload\t\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "037a1a6822872030"
+            ]
+        ]
+    },
+    {
+        "id": "8992823175b7aa34",
+        "type": "change",
+        "z": "adb90767e39e372b",
+        "name": "index 3",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t\t       \"commentText\": payload\t\t\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "037a1a6822872030"
+            ]
+        ]
+    },
+    {
+        "id": "19552e6818a4acd9",
+        "type": "change",
+        "z": "adb90767e39e372b",
+        "name": "index 4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t\t       \"commentType\": payload\t\t\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "037a1a6822872030"
+            ]
+        ]
+    },
+    {
+        "id": "6a70b3b8a41129ed",
+        "type": "change",
+        "z": "adb90767e39e372b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "current",
+                "pt": "msg",
+                "to": "c",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{    \"comment\" : payload }",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1000,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b63d5cd3cf15f9e3",
+        "type": "subflow",
+        "name": "Trailer Record",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 100,
+                "wires": [
+                    {
+                        "id": "c447b39e66a04453"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1060,
+                "y": 120,
+                "wires": [
+                    {
+                        "id": "9d910ef11b1d9914",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "67c6c8e1377a583a",
+        "type": "join",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload.trailer",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "9d910ef11b1d9914"
+            ]
+        ]
+    },
+    {
+        "id": "c447b39e66a04453",
+        "type": "split",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "",
+        "splt": "|",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "88ec6dc2e49aa569"
+            ]
+        ]
+    },
+    {
+        "id": "930f84507e91803c",
+        "type": "change",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "Index 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"trailer\":{\"recordType\":\"L\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "67c6c8e1377a583a"
+            ]
+        ]
+    },
+    {
+        "id": "88ec6dc2e49aa569",
+        "type": "switch",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "Switch Index",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 350,
+        "y": 100,
+        "wires": [
+            [
+                "930f84507e91803c"
+            ],
+            [
+                "7b2763216bcadd8f"
+            ],
+            [
+                "560bee677066b90c"
+            ]
+        ]
+    },
+    {
+        "id": "7b2763216bcadd8f",
+        "type": "change",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "index 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"trailer\":{\"sequenceNumber\": payload}\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 120,
+        "wires": [
+            [
+                "67c6c8e1377a583a"
+            ]
+        ]
+    },
+    {
+        "id": "560bee677066b90c",
+        "type": "change",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "index 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"trailer\":{\"terminationCode\": payload}\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "67c6c8e1377a583a"
+            ]
+        ]
+    },
+    {
+        "id": "9d910ef11b1d9914",
+        "type": "change",
+        "z": "b63d5cd3cf15f9e3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "current",
+                "pt": "msg",
+                "to": "t",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b8565d1f4f4b4972",
+        "type": "subflow",
+        "name": "Result-Indiko",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 100,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "e04d6e9626b1d63a"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1300,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "66a5c71ef7ead129",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "f2717d9cbede341a",
+        "type": "join",
+        "z": "b8565d1f4f4b4972",
+        "name": "Join Result Record",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1030,
+        "y": 220,
+        "wires": [
+            [
+                "66a5c71ef7ead129"
+            ]
+        ]
+    },
+    {
+        "id": "e04d6e9626b1d63a",
+        "type": "split",
+        "z": "b8565d1f4f4b4972",
+        "name": "",
+        "splt": "|",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 270,
+        "y": 280,
+        "wires": [
+            [
+                "7f62ac6d7d90636d"
+            ]
+        ]
+    },
+    {
+        "id": "9583aa495dde7f77",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "Index 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recordType\":\"R\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 180,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "7f62ac6d7d90636d",
+        "type": "switch",
+        "z": "b8565d1f4f4b4972",
+        "name": "Switch Index",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "10",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "12",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "13",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 11,
+        "x": 430,
+        "y": 280,
+        "wires": [
+            [
+                "9583aa495dde7f77"
+            ],
+            [
+                "4971c2ddf78c2e55"
+            ],
+            [
+                "805d8e5d7e60933b"
+            ],
+            [
+                "fcc084fca1f54589"
+            ],
+            [
+                "d9dfe46485dfe285"
+            ],
+            [
+                "afa36410d277ac01"
+            ],
+            [
+                "02c55049746f7cbc"
+            ],
+            [
+                "a9d86efc4695183b"
+            ],
+            [
+                "5d26b79c284f2fa0"
+            ],
+            [
+                "53985f1fb19576c8"
+            ],
+            [
+                "9e801f3f7c268fa3"
+            ]
+        ]
+    },
+    {
+        "id": "4971c2ddf78c2e55",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t        \"sequenceNumber\":payload\t}\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 220,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "805d8e5d7e60933b",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"universalTestId\" : {\t       \"code\" : $split(payload,\"^\")[3],\t       \"dilution\" : $split(payload,\"^\")[4]\t    }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 260,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "fcc084fca1f54589",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 3",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"dataValue\" : payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 723,
+        "y": 302,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "d9dfe46485dfe285",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"units\" : payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 340,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "afa36410d277ac01",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"refRanges\": {\t       \"low\": $split(payload,\"^\")[0],\t       \"high\": $split(payload,\"^\")[1]\t        }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 380,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "02c55049746f7cbc",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 6",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"resultAbnormalFlag\" : payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 420,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "a9d86efc4695183b",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 8",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"resultStatus\" : payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 460,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "5d26b79c284f2fa0",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 10",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"operatorId\" : payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 500,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "53985f1fb19576c8",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 12",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"testDatetime\" : payload\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 540,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "9e801f3f7c268fa3",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "index 13",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"instrumentId\" : payload\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 580,
+        "wires": [
+            [
+                "f2717d9cbede341a"
+            ]
+        ]
+    },
+    {
+        "id": "66a5c71ef7ead129",
+        "type": "change",
+        "z": "b8565d1f4f4b4972",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "current",
+                "pt": "msg",
+                "to": "r",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1180,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9ca11c7872f136fa",
+        "type": "subflow",
+        "name": "Order-indiko",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 40,
+                "y": 500,
+                "wires": [
+                    {
+                        "id": "edf5f484b7f0f95d"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1360,
+                "y": 260,
+                "wires": [
+                    {
+                        "id": "1b6de45fa249b3d1",
+                        "port": 0
+                    }
+                ]
+            },
+            {
+                "x": 1360,
+                "y": 420,
+                "wires": [
+                    {
+                        "id": "081802e912e8ef93",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "ae5816ebe3637166",
+        "type": "join",
+        "z": "9ca11c7872f136fa",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1030,
+        "y": 260,
+        "wires": [
+            [
+                "1b6de45fa249b3d1"
+            ]
+        ]
+    },
+    {
+        "id": "edf5f484b7f0f95d",
+        "type": "split",
+        "z": "9ca11c7872f136fa",
+        "name": "",
+        "splt": "|",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "639cf678db9f617f"
+            ]
+        ]
+    },
+    {
+        "id": "8e45f7a3f3ef68a0",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "Index 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"recordType\":\"O\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 60,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "639cf678db9f617f",
+        "type": "switch",
+        "z": "9ca11c7872f136fa",
+        "name": "Switch Index",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "13",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "15",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "24",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "25",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 11,
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "8e45f7a3f3ef68a0"
+            ],
+            [
+                "f1095c5116592f51"
+            ],
+            [
+                "629dd2318b6e25be"
+            ],
+            [
+                "081802e912e8ef93"
+            ],
+            [
+                "71595f2174191f66"
+            ],
+            [
+                "ed11ffef0cb539f8"
+            ],
+            [
+                "8e6b1accc19ea4ff"
+            ],
+            [],
+            [
+                "7fc233ee2352836f"
+            ],
+            [],
+            [
+                "f3f1bb3ded53eb3c"
+            ]
+        ]
+    },
+    {
+        "id": "f1095c5116592f51",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t        \"sequenceNumber\":payload\t\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 100,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "629dd2318b6e25be",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"instrumentSpecimen\": {\t       \"position\": $split(payload,\"^\")[3],\t       \"sampleId\": $split(payload,\"^\")[0]\t    }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 140,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "081802e912e8ef93",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"code\" : $split(payload,\"^\")[3],\t   \"dilution\" : $split(payload,\"^\")[4]\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "71595f2174191f66",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t  \t        \"priority\":payload\t \t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 180,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "ed11ffef0cb539f8",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 7",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \t    \"orderDatetime\": payload\t    \t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 220,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "8e6b1accc19ea4ff",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 11",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \t    \"actionCode\": payload\t    \t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "7fc233ee2352836f",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 15",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"specimenDescriptor\": payload\t    \t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 300,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "f3f1bb3ded53eb3c",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "index 25",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t\t    \"reportType\": payload\t    \t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 340,
+        "wires": [
+            [
+                "ae5816ebe3637166"
+            ]
+        ]
+    },
+    {
+        "id": "1b6de45fa249b3d1",
+        "type": "change",
+        "z": "9ca11c7872f136fa",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "current",
+                "pt": "msg",
+                "to": "o",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1200,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9ebf9da2316336f4",
+        "type": "subflow",
+        "name": "Patient-indiko",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "f03cdbcc938fa2af"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1140,
+                "y": 280,
+                "wires": [
+                    {
+                        "id": "938ea504e8f56b94",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "938ea504e8f56b94",
+        "type": "join",
+        "z": "9ebf9da2316336f4",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload.patient",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 770,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f03cdbcc938fa2af",
+        "type": "split",
+        "z": "9ebf9da2316336f4",
+        "name": "",
+        "splt": "|",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "35bc60a93fbcb9b4"
+            ]
+        ]
+    },
+    {
+        "id": "19fda105bb5fb0df",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "Index 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"patient\":{\"recordType\":\"P\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "35bc60a93fbcb9b4",
+        "type": "switch",
+        "z": "9ebf9da2316336f4",
+        "name": "Switch Index",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "25",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 7,
+        "x": 450,
+        "y": 280,
+        "wires": [
+            [
+                "19fda105bb5fb0df"
+            ],
+            [
+                "947e1ab0ec5e2080"
+            ],
+            [
+                "36dcf698af07c414"
+            ],
+            [
+                "c1b16dd9414ae8dc"
+            ],
+            [
+                "8ed141fa8266bb32"
+            ],
+            [
+                "cb057597a5ed1e05"
+            ],
+            [
+                "9044c28fce959d0a"
+            ]
+        ]
+    },
+    {
+        "id": "947e1ab0ec5e2080",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "index 1",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"patient\":{\"sequenceNumber\":payload}}\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 280,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "36dcf698af07c414",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "index 2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"patient\":{\"practiceAssignedPatientId\":payload}\t}\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 320,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "c1b16dd9414ae8dc",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "index 5",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$var_data := $split(payload,\" \")\t{\t   \"patient\":{\t       \"patientName\":\t            {\t           \"firstName\": $[1]\t            ,\t           \"lastName\": $[2]\t            }\t        }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 360,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "8ed141fa8266bb32",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "index 7",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"patient\":{\"birthDate\":payload}}\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 400,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "9044c28fce959d0a",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "index 25",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"patient\":{\t       \"location\":payload\t        }\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 480,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "cb057597a5ed1e05",
+        "type": "change",
+        "z": "9ebf9da2316336f4",
+        "name": "index 8",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"patient\":{\"patientGender\":payload}}\t",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 440,
+        "wires": [
+            [
+                "938ea504e8f56b94"
+            ]
+        ]
+    },
+    {
+        "id": "fe7f9011bd6b0d00",
+        "type": "subflow",
+        "name": "Header-indiko",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 120,
+                "y": 360,
+                "wires": [
+                    {
+                        "id": "3daa133f8a5f0605"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1060,
+                "y": 340,
+                "wires": [
+                    {
+                        "id": "16a00e2bd0ab611e",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "16a00e2bd0ab611e",
+        "type": "join",
+        "z": "fe7f9011bd6b0d00",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload.header",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 910,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3daa133f8a5f0605",
+        "type": "split",
+        "z": "fe7f9011bd6b0d00",
+        "name": "",
+        "splt": "|",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 310,
+        "y": 320,
+        "wires": [
+            [
+                "2bd89c205d2a67b0"
+            ]
+        ]
+    },
+    {
+        "id": "5165e83592dbfd5e",
+        "type": "change",
+        "z": "fe7f9011bd6b0d00",
+        "name": "Index 0",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"header\":{\"recordType\":\"H\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 140,
+        "wires": [
+            [
+                "16a00e2bd0ab611e"
+            ]
+        ]
+    },
+    {
+        "id": "2bd89c205d2a67b0",
+        "type": "switch",
+        "z": "fe7f9011bd6b0d00",
+        "name": "Switch Index",
+        "property": "parts.index",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "13",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "5165e83592dbfd5e"
+            ],
+            [
+                "b4db763d1c86d8e8"
+            ],
+            [
+                "e90020575bbd292b"
+            ],
+            [
+                "1f61d0d212c76185"
+            ]
+        ]
+    },
+    {
+        "id": "b4db763d1c86d8e8",
+        "type": "change",
+        "z": "fe7f9011bd6b0d00",
+        "name": "index 4",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "\t{\t   \"header\":\t        {\t       \"sender\":{\t           \"systemName\": $split(payload,\"^\")[1],\t           \"instrumentType\": $split(payload,\"^\")[0]\t        }\t        \t        }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 180,
+        "wires": [
+            [
+                "16a00e2bd0ab611e"
+            ]
+        ]
+    },
+    {
+        "id": "e90020575bbd292b",
+        "type": "change",
+        "z": "fe7f9011bd6b0d00",
+        "name": "index 11",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"header\":\t        {\"processingId\": payload}\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 220,
+        "wires": [
+            [
+                "16a00e2bd0ab611e"
+            ]
+        ]
+    },
+    {
+        "id": "1f61d0d212c76185",
+        "type": "change",
+        "z": "fe7f9011bd6b0d00",
+        "name": "index 13",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"header\":\t        {\"datetime\": payload}\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "16a00e2bd0ab611e"
+            ]
+        ]
+    },
+    {
+        "id": "f363ac65d5f4d104",
+        "type": "tab",
+        "label": "Indiko 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f0d8c2a7edcbf5a6",
+        "type": "switch",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($split(payload, \"|\")[0],\"H\")",
+                "vt": "jsonata"
+            },
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($split(payload, \"|\")[0],\"P\")",
+                "vt": "jsonata"
+            },
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($split(payload, \"|\")[0],\"O\")",
+                "vt": "jsonata"
+            },
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($split(payload, \"|\")[0],\"R\")",
+                "vt": "jsonata"
+            },
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($split(payload, \"|\")[0],\"L\")",
+                "vt": "jsonata"
+            },
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($split(payload, \"|\")[0],\"C\")",
+                "vt": "jsonata"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 6,
+        "x": 530,
+        "y": 740,
+        "wires": [
+            [
+                "8523c0cf197a9b36",
+                "1e18f9d49e4ea7ed"
+            ],
+            [
+                "584fef47c4bfaed4"
+            ],
+            [
+                "c2105acdfa293030"
+            ],
+            [
+                "3d8ac12c4c1ba318"
+            ],
+            [
+                "298aed3d42c6ff01"
+            ],
+            [
+                "0b3c4a62a040719d"
+            ]
+        ],
+        "outputLabels": [
+            "Header",
+            "Patient",
+            "Order",
+            "Result",
+            "Trailer",
+            ""
+        ]
+    },
+    {
+        "id": "8523c0cf197a9b36",
+        "type": "subflow:fe7f9011bd6b0d00",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "x": 760,
+        "y": 640,
+        "wires": [
+            [
+                "25c01bd38805770b"
+            ]
+        ]
+    },
+    {
+        "id": "584fef47c4bfaed4",
+        "type": "subflow:9ebf9da2316336f4",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "x": 760,
+        "y": 680,
+        "wires": [
+            [
+                "9f12bfe19e20239a"
+            ]
+        ]
+    },
+    {
+        "id": "c2105acdfa293030",
+        "type": "subflow:9ca11c7872f136fa",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "x": 750,
+        "y": 720,
+        "wires": [
+            [
+                "73ad8f09c883c747",
+                "72c470fc04f702ef"
+            ],
+            [
+                "8bb74eb19d7f0311"
+            ]
+        ]
+    },
+    {
+        "id": "3d8ac12c4c1ba318",
+        "type": "subflow:b8565d1f4f4b4972",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "x": 750,
+        "y": 760,
+        "wires": [
+            [
+                "72c470fc04f702ef"
+            ]
+        ]
+    },
+    {
+        "id": "298aed3d42c6ff01",
+        "type": "subflow:b63d5cd3cf15f9e3",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "x": 760,
+        "y": 800,
+        "wires": [
+            [
+                "25c01bd38805770b",
+                "de15d2559d1d313d",
+                "72c470fc04f702ef"
+            ]
+        ]
+    },
+    {
+        "id": "1e18f9d49e4ea7ed",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "Message Version",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"messageVersion\" : \"1.1\",\t   \"equipmentId\" : \"00000010\",\t    \"equipmentDatetime\" :$now()\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
+        "y": 600,
+        "wires": [
+            [
+                "25c01bd38805770b"
+            ]
+        ]
+    },
+    {
+        "id": "9f12bfe19e20239a",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload.patient",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 970,
+        "y": 560,
+        "wires": [
+            [
+                "8bd3b70823db1cc9"
+            ]
+        ]
+    },
+    {
+        "id": "8bd3b70823db1cc9",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1130,
+        "y": 560,
+        "wires": [
+            [
+                "25c01bd38805770b"
+            ]
+        ]
+    },
+    {
+        "id": "25c01bd38805770b",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1810,
+        "y": 780,
+        "wires": [
+            [
+                "63dc4ae9588753af",
+                "58ba3bc77791c22a",
+                "ef8a0b830e925aea"
+            ]
+        ]
+    },
+    {
+        "id": "63dc4ae9588753af",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2010,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "dd2393dfe1011206",
+        "type": "simple-queue",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "firstMessageBypass": false,
+        "bypassInterval": "0",
+        "x": 1010,
+        "y": 740,
+        "wires": [
+            [
+                "284a46a7a3eb7df4"
+            ]
+        ]
+    },
+    {
+        "id": "3ab7a19860a8b8b0",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "trigger",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1100,
+        "y": 840,
+        "wires": [
+            [
+                "dd2393dfe1011206"
+            ]
+        ]
+    },
+    {
+        "id": "a6ae61889d01f17c",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "Join Results Tag",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1180,
+        "y": 760,
+        "wires": [
+            [
+                "7011d8fa3a198ea9"
+            ]
+        ]
+    },
+    {
+        "id": "06529369f12cf6b6",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1190,
+        "y": 800,
+        "wires": [
+            [
+                "a6ae61889d01f17c"
+            ]
+        ]
+    },
+    {
+        "id": "284a46a7a3eb7df4",
+        "type": "switch",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "property": "_queueCount",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 990,
+        "y": 800,
+        "wires": [
+            [
+                "06529369f12cf6b6"
+            ],
+            [
+                "a6ae61889d01f17c",
+                "3ab7a19860a8b8b0"
+            ]
+        ]
+    },
+    {
+        "id": "8bb74eb19d7f0311",
+        "type": "simple-queue",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "firstMessageBypass": false,
+        "bypassInterval": "0",
+        "x": 1410,
+        "y": 680,
+        "wires": [
+            [
+                "0a130bc4e8f13c49"
+            ]
+        ]
+    },
+    {
+        "id": "de15d2559d1d313d",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "trigger",
+                "pt": "msg",
+                "to": "1",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1420,
+        "y": 720,
+        "wires": [
+            [
+                "8bb74eb19d7f0311"
+            ]
+        ]
+    },
+    {
+        "id": "d81d52ce37c7402e",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "Join Results Tag",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "num",
+        "reduceFixup": "",
+        "x": 1620,
+        "y": 680,
+        "wires": [
+            [
+                "fb7f3c19b2f9724b",
+                "3ab7a19860a8b8b0"
+            ]
+        ]
+    },
+    {
+        "id": "2c1edaf84e05bd7d",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1630,
+        "y": 720,
+        "wires": [
+            [
+                "d81d52ce37c7402e"
+            ]
+        ]
+    },
+    {
+        "id": "0a130bc4e8f13c49",
+        "type": "switch",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "property": "_queueCount",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 1430,
+        "y": 780,
+        "wires": [
+            [
+                "2c1edaf84e05bd7d"
+            ],
+            [
+                "d81d52ce37c7402e",
+                "de15d2559d1d313d"
+            ]
+        ]
+    },
+    {
+        "id": "fb7f3c19b2f9724b",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"patient\" : {\t        \"order\" : {\t            \"universalTestId\" : payload\t        }\t    }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1260,
+        "y": 640,
+        "wires": [
+            [
+                "843e1670bc979785"
+            ]
+        ]
+    },
+    {
+        "id": "73ad8f09c883c747",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"patient\" : {\t        \"order\" : payload}\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1020,
+        "y": 640,
+        "wires": [
+            [
+                "a830842957f00d7c"
+            ]
+        ]
+    },
+    {
+        "id": "a830842957f00d7c",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload.patient.order",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1250,
+        "y": 600,
+        "wires": [
+            [
+                "6bc8ce8403701a06"
+            ]
+        ]
+    },
+    {
+        "id": "7011d8fa3a198ea9",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t   \"patient\" : {\t       \"order\" : {\t        \"result\" : payload\t    }\t   }\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1440,
+        "y": 860,
+        "wires": [
+            [
+                "843e1670bc979785"
+            ]
+        ]
+    },
+    {
+        "id": "6bc8ce8403701a06",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1550,
+        "y": 600,
+        "wires": [
+            [
+                "9f12bfe19e20239a"
+            ]
+        ]
+    },
+    {
+        "id": "843e1670bc979785",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload.patient.order",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1610,
+        "y": 820,
+        "wires": [
+            [
+                "2ce272d69ad99ac4"
+            ]
+        ]
+    },
+    {
+        "id": "2ce272d69ad99ac4",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "complete",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1650,
+        "y": 900,
+        "wires": [
+            [
+                "a830842957f00d7c"
+            ]
+        ]
+    },
+    {
+        "id": "0b3c4a62a040719d",
+        "type": "subflow:adb90767e39e372b",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "x": 760,
+        "y": 840,
+        "wires": [
+            [
+                "72c470fc04f702ef"
+            ]
+        ]
+    },
+    {
+        "id": "72c470fc04f702ef",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "Add Comment",
+        "func": "if(msg.current == \"r\" ){\n    context.set(\"data\",msg.payload)\n    context.set(\"last_state\",\"r\")\n}\nelse if(msg.current == \"c\" && context.get(\"last_state\") == \"r\"){\n    var comment = msg.payload\n    msg.payload = context.get(\"data\")\n    node.send(msg)\n    msg.payload = comment\n    msg.complete = true\n    node.send(msg)\n    context.set(\"last_state\",\"c\")\n}\nelse if(msg.current == \"o\" && context.get(\"last_state\") == \"r\" ){\n    msg.payload = context.get(\"data\")\n    msg.complete = true\n    node.send(msg)\n    context.set(\"last_state\",\"o\")\n}\nelse if(msg.current == \"t\" && context.get(\"last_state\") == \"r\" ){\n    msg.payload = context.get(\"data\")\n    msg.complete = true\n    node.send(msg)\n    context.set(\"last_state\",\"t\")\n}\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.flow.get(\"comment\")\ncontext.set(\"last_state\",\"h\")",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 920,
+        "wires": [
+            [
+                "c30c93c03398fc1f"
+            ]
+        ]
+    },
+    {
+        "id": "c30c93c03398fc1f",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "mode": "custom",
+        "build": "merged",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1130,
+        "y": 920,
+        "wires": [
+            [
+                "dd2393dfe1011206"
+            ]
+        ]
+    },
+    {
+        "id": "411d757dadbec098",
+        "type": "file in",
+        "z": "f363ac65d5f4d104",
+        "name": "Dummy",
+        "filename": "C:\\Users\\wahyudi\\Documents\\Row Data\\indiko1.txt",
+        "format": "lines",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 360,
+        "y": 800,
+        "wires": [
+            [
+                "f0d8c2a7edcbf5a6"
+            ]
+        ]
+    },
+    {
+        "id": "c78ebb867aa80343",
+        "type": "inject",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 900,
+        "wires": [
+            [
+                "411d757dadbec098"
+            ]
+        ]
+    },
+    {
+        "id": "9b9e79c6518eee47",
+        "type": "serial in",
+        "z": "f363ac65d5f4d104",
+        "name": "Serial IN",
+        "serial": "8269401d.f3814",
+        "x": 140,
+        "y": 340,
+        "wires": [
+            [
+                "f070578a3f2b3b97"
+            ]
+        ]
+    },
+    {
+        "id": "f070578a3f2b3b97",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "Analize char in",
+        "func": "// msg1 is the answer sent to serial port\n// msg2 interprets the received character for the log file\n// msg3 when ready is the complete frame to be analized.\n// msg4 Sent message between STX and ETX.\n// msg5 Sent trigger sending message to the cloud, after EOT.\n\nvar frame=global.get('frame')  // Buffer for the current frame\nvar chksum=global.get('chksum');  // Check sum of frame\nvar calchksum=global.get('calchksum'); // Calculate checksum\nvar framechksum = global.get('framechksum'); // We store here the frame chcksum\nvar numchars = context.get('numchars');\nvar cks = context.get('cks');\nvar tracechars = global.get('tracechars');\n\nvar msg1 = {payload: [0]};\nvar msg2 = {payload:\"\"};\nvar msg3 = {payload:\"\"};\nvar msg4 = {payload:\"\"};\nvar msg5 = {payload:\"\"};\n\n\nif (calchksum !== false) {\n    global.set('chksum', chksum + msg.payload[0]);\n    tracechars.push(msg.payload[0]);\n    global.set('tracechars',tracechars);\n    if (global.get('chksum') > 255) {\n        global.set('chksum', global.get('chksum') - 256);\n    }\n} else {\n    if (context.get('finished') === true) {\n        if (numchars <= 2) {\n            framechksum = framechksum + String.fromCharCode(msg.payload[0]);\n            global.set('framechksum',framechksum);\n            numchars++;\n            context.set('numchars',numchars)\n            if (numchars >= 2) {\n                context.set('finished',false);\n            }\n        }\n    }\n    \n}\n\nswitch(msg.payload[0]) {\n    case 2:\n        global.set('chksum',false);         // Check sum of frame\n        global.set('calchksum',1);          // Flag to Calculate checksum\n        global.set('frame', \"\");            // Buffer for the current frame\n        global.set('framechksum',\"\");       // We store here the frame chcksum\n        context.set('numchars',0);          // Number of characters of received frame checksum\n        context.set('finished',false);      // Has finished summing chksum\n        context.set('cks',\"\");              // String version of calculated checksum\n        msg1 = null;\n        msg2.payload = \"<STX>\";\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n        break;\n    case 3:\n        global.set('calchksum',false);\n        context.set('finished',true);\n        msg1 = null;\n        msg2.payload = \"<ETX>\";\n        msg4.payload = frame.toString();\n        frame = frame + msg.payload.toString();\n        global.set('frame', frame);\n\n        msg3 = null;\n        msg5 = null;\n        break;\n    case 4:\n        msg1.payload = new Buffer([0x04]);\n        msg2.payload = \"<EOT>\";\n        msg3 = null;\n        msg4 = null;\n        msg5.payload = \"<EOT>\";\n        break;\n    case 5:\n        global.set(\"frame\",\"\");\n        msg1.payload = new Buffer([0x06]);\n        msg2.payload = \"<ENQ>\";\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n        break;\n    case 6:\n        msg1 = null;\n        msg2.payload = \"<ACK>\";\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n        break;\n    case 10:\n        cks = chksum.toString(16).padStart(2, '0').toUpperCase();\n        context.set('cks',cks);\n        if (cks == framechksum) {\n            msg1.payload = new Buffer([0x06]);  // Checksum OK = ACK\n            msg3.payload = frame + \"\\n\";\n        } else {\n            msg1.payload = new Buffer([0x15]);  // Checksum not OK = NAK\n            msg3.payload = null;\n        }\n\n        msg4 = null;\n        msg5 = null;\n        msg2.payload = \"<LF>\";\n        break;\n    case 13:\n        msg1 = null;\n        msg2.payload = \"<CR>\";\n        frame = frame + msg.payload.toString();\n        global.set('frame', frame);\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n        break;\n    case 21:\n        msg1 = null;\n        msg2.payload = \"<NAK>\";\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n        break;\n    case 23:\n        msg1 = null;\n        global.set('calchksum',false);\n        context.set('finished',true);\n        msg2.payload = \"<ETB>\";\n        frame = frame + msg.payload.toString();\n        global.set('frame', frame);\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n        break;\n    default:\n        msg1 = null;\n        msg2.payload = msg.payload.toString();\n        frame = frame + msg.payload.toString();\n        global.set('frame', frame);\n        msg3 = null;\n        msg4 = null;\n        msg5 = null;\n}\nmsg2.topic = \"Rx: \";\nreturn [msg1,msg2,msg3,msg4,msg5];",
+        "outputs": 5,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is deployed.\n\nglobal.set('idUnitOutlet', \"MY_Virtual_Device\");            // Change this value before delivery\nglobal.set('frame', \"\");            // Buffer for the current frame\nglobal.set('chksum',false);         // Check sum of frame\nglobal.set('calchksum',0);          // Flag to Calculate checksum\nglobal.set('framechksum',\"\");       // We store here the frame chcksum\ncontext.set('numchars',0);          // Number of characters of received frame checksum\ncontext.set('finished',false);      // Has finished summing chksum\ncontext.set('cks',\"\");              // String version of calculated checksum\n// debug arrays\nglobal.set('tracechars',[]);\n",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 340,
+        "wires": [
+            [
+                "38b489b87d271b86",
+                "eb50293c8b134d94"
+            ],
+            [
+                "e0aed8c9ea8454fa",
+                "2316b5d0119690d8"
+            ],
+            [],
+            [
+                "5ff582949c1b973a",
+                "f0d8c2a7edcbf5a6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "eb50293c8b134d94",
+        "type": "serial out",
+        "z": "f363ac65d5f4d104",
+        "name": "Serial Out",
+        "serial": "8269401d.f3814",
+        "x": 600,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "38b489b87d271b86",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "Analize char out",
+        "func": "// msg1 es la respuesta del puerto serial\n// msg1 es la interpretación del character recibido para el log\nvar msg1 = {payload:[0]};\nswitch(msg.payload[0]) {\n    case 0:\n        msg1.payload = \"<NUL>\";\n        break;\n    case 1:\n        msg1.payload = \"<SOH>\";\n        break;\n    case 2:\n        msg1.payload = \"<STX>\";\n        break;\n    case 3:\n        msg1.payload = \"<ETX>\";\n        break;\n    case 4:\n        msg1.payload = \"<EOT>\";\n        break;\n    case 5:\n        msg1.payload = \"<ENQ>\";\n        break;\n    case 6:\n        msg1.payload = \"<ACK>\";\n        break;\n    case 7:\n        msg1.payload = \"<BEL>\";\n        break;\n    case 8:\n        msg1.payload = \"<BS>\";\n        break;\n    case 9:\n        msg1.payload = \"<TAB>\";\n        break;\n    case 10:\n        msg1.payload = \"<LF>\";\n        break;\n    case 13:\n        msg1.payload = \"<CR>\";\n        break;\n    case 21:\n        msg1.payload = \"<NAK>\";\n        break;\n    case 23:\n        msg1.payload = \"<ETB>\";\n        break;\n    default:\n        msg1.payload = msg.payload.toString();\n}\nmsg1.topic = 'Tx: ';\nreturn msg1;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "e0aed8c9ea8454fa",
+                "2316b5d0119690d8"
+            ]
+        ]
+    },
+    {
+        "id": "2316b5d0119690d8",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "func": "var trama=context.get('trama') || \"\";\nvar tmp=\"\";\ntmp = trama.concat(msg.payload);\ncontext.set('trama',tmp);  \nif (msg.payload.includes(\"<LF>\") || msg.payload.includes(\"<ACK>\") || msg.payload.includes(\"<NAK>\") || msg.payload.includes(\"<ENQ>\") || msg.payload.includes(\"<EOT>\") ) {\n    msg.payload = msg.topic.concat(tmp);\n    context.set(\"trama\",\"\");  \n    return msg;    \n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 920,
+        "y": 220,
+        "wires": [
+            [
+                "0b420378cf10c5e5"
+            ]
+        ]
+    },
+    {
+        "id": "e0aed8c9ea8454fa",
+        "type": "gate",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "controlTopic": "astm_control",
+        "defaultState": "closed",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "statusCmd": "",
+        "persist": false,
+        "x": 930,
+        "y": 300,
+        "wires": [
+            [
+                "0304c7b88a213f11"
+            ]
+        ]
+    },
+    {
+        "id": "0304c7b88a213f11",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "func": "if (msg.payload.includes(\"<LF>\") || msg.payload.includes(\"<ACK>\") || msg.payload.includes(\"<NAK>\") || msg.payload.includes(\"<ENQ>\") || msg.payload.includes(\"<EOT>\") ) {\n    msg.payload = msg.payload.concat(\"\\n\");\n}\nreturn msg; ",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1100,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b420378cf10c5e5",
+        "type": "flogger",
+        "z": "f363ac65d5f4d104",
+        "name": "serialtst.log",
+        "logfile": "serialtst.log",
+        "inputchoice": "fullmsg",
+        "inputobject": "payload",
+        "inputobjectType": "msg",
+        "inputmoustache": "Recieved payload {{payload}} and topic {{topic}}",
+        "loglevel": "INFO",
+        "logconfig": "8c711f6a.8cc4",
+        "sendpane": false,
+        "x": 1150,
+        "y": 220,
+        "wires": [
+            [
+                "d7c5bf68ee8f4dc9"
+            ]
+        ]
+    },
+    {
+        "id": "d7c5bf68ee8f4dc9",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1350,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "8df44a47aed6e6e7",
+        "type": "file",
+        "z": "f363ac65d5f4d104",
+        "d": true,
+        "name": "",
+        "filename": "/tmp/tramas.txt",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1300,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0f7aa204d742de7e",
+        "type": "inject",
+        "z": "f363ac65d5f4d104",
+        "name": "Capture frames to a file",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "control",
+        "payload": "toggle",
+        "payloadType": "str",
+        "x": 720,
+        "y": 360,
+        "wires": [
+            [
+                "e0aed8c9ea8454fa"
+            ]
+        ]
+    },
+    {
+        "id": "5ff582949c1b973a",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "debug line",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "fa5d03a5686c34b2",
+        "type": "switch",
+        "z": "f363ac65d5f4d104",
+        "name": "Kafka OK/NOK?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "jsonata_exp",
+                "v": "$contains($lowercase(msg.status.text),\"ready\") or \t$contains($lowercase(msg.status.text),\"idle\") or \t$contains($lowercase(msg.status.text),\"sending\")",
+                "vt": "jsonata"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 860,
+        "y": 1420,
+        "wires": [
+            [
+                "69231ff4bd9e4f18"
+            ],
+            [
+                "2b56fa8cf4520755"
+            ]
+        ],
+        "outputLabels": [
+            "OK",
+            "NOK"
+        ]
+    },
+    {
+        "id": "c652bda3f6068ff5",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "FAIL",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1850,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "e1a8ceedb3f3d747",
+        "type": "status",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "scope": [
+            "ef38f9f42e91f9a3"
+        ],
+        "x": 660,
+        "y": 1420,
+        "wires": [
+            [
+                "e88faedf214d208f",
+                "fa5d03a5686c34b2"
+            ]
+        ]
+    },
+    {
+        "id": "e88faedf214d208f",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "Producer Status",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "status",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 860,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "1be4b13d3f65447c",
+        "type": "inject",
+        "z": "f363ac65d5f4d104",
+        "name": "Retry",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "900",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "control",
+        "payload": "peek",
+        "payloadType": "str",
+        "x": 1950,
+        "y": 1360,
+        "wires": [
+            [
+                "f9c164a0a11f6c87"
+            ]
+        ]
+    },
+    {
+        "id": "98b764758cf4a31e",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "get next",
+        "func": "node.send({topic: \"control\", payload: \"flush\"})\nmsg.topic = \"control\"\nmsg.payload = \"peek\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1940,
+        "y": 1300,
+        "wires": [
+            [
+                "58ba3bc77791c22a"
+            ]
+        ]
+    },
+    {
+        "id": "f9c164a0a11f6c87",
+        "type": "gate",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "controlTopic": "gate_control",
+        "defaultState": "open",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "persist": false,
+        "x": 2350,
+        "y": 1360,
+        "wires": [
+            [
+                "58ba3bc77791c22a"
+            ]
+        ]
+    },
+    {
+        "id": "7850fcab015b71e1",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "Close gate",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "gate_control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "close",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2190,
+        "y": 1320,
+        "wires": [
+            [
+                "f9c164a0a11f6c87"
+            ]
+        ]
+    },
+    {
+        "id": "d470fd03367b0e6c",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "Open gate",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "gate_control",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "open",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 2190,
+        "y": 1420,
+        "wires": [
+            [
+                "f9c164a0a11f6c87"
+            ]
+        ]
+    },
+    {
+        "id": "af9446a86f6dc5eb",
+        "type": "status",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "scope": [
+            "58ba3bc77791c22a"
+        ],
+        "x": 1940,
+        "y": 1480,
+        "wires": [
+            [
+                "0e9d396c84883ab8"
+            ]
+        ]
+    },
+    {
+        "id": "0e9d396c84883ab8",
+        "type": "function",
+        "z": "f363ac65d5f4d104",
+        "name": "Queue empty?",
+        "func": "// expects msg.status.text in form \"queuing: <number>\"\n// sends a message if queue is empty\nif (parseInt(msg.status.text.split(\":\")[1]) !== 0) {\n    msg = null\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2200,
+        "y": 1480,
+        "wires": [
+            [
+                "d470fd03367b0e6c"
+            ]
+        ]
+    },
+    {
+        "id": "f645ec5a8c45160e",
+        "type": "join",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1350,
+        "y": 1340,
+        "wires": [
+            [
+                "3ec8b4553a828b15"
+            ]
+        ]
+    },
+    {
+        "id": "3ec8b4553a828b15",
+        "type": "switch",
+        "z": "f363ac65d5f4d104",
+        "name": "Data message?",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "data",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 1520,
+        "y": 1340,
+        "wires": [
+            [
+                "0f57ee985607af9a"
+            ]
+        ]
+    },
+    {
+        "id": "0f57ee985607af9a",
+        "type": "switch",
+        "z": "f363ac65d5f4d104",
+        "name": "OK/Fail?",
+        "property": "payload.internet",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "OK",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1700,
+        "y": 1340,
+        "wires": [
+            [
+                "4da02fba0481e484",
+                "98b764758cf4a31e"
+            ],
+            [
+                "c652bda3f6068ff5",
+                "d470fd03367b0e6c"
+            ]
+        ]
+    },
+    {
+        "id": "69231ff4bd9e4f18",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "Kafka OK",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "OK",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "internet",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1080,
+        "y": 1380,
+        "wires": [
+            [
+                "f645ec5a8c45160e"
+            ]
+        ]
+    },
+    {
+        "id": "2b56fa8cf4520755",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "Kafka NOK",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "NOK",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "internet",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1090,
+        "y": 1460,
+        "wires": [
+            [
+                "f645ec5a8c45160e"
+            ]
+        ]
+    },
+    {
+        "id": "4da02fba0481e484",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "OK",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1850,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "58ba3bc77791c22a",
+        "type": "q-gate",
+        "z": "f363ac65d5f4d104",
+        "name": "q-gate",
+        "controlTopic": "control",
+        "defaultState": "queueing",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "queueCmd": "queue",
+        "defaultCmd": "default",
+        "triggerCmd": "trigger",
+        "flushCmd": "flush",
+        "resetCmd": "reset",
+        "peekCmd": "peek",
+        "dropCmd": "drop",
+        "statusCmd": "status",
+        "maxQueueLength": "0",
+        "keepNewest": false,
+        "qToggle": false,
+        "persist": true,
+        "storeName": "file",
+        "x": 2190,
+        "y": 1060,
+        "wires": [
+            [
+                "9c0429cc5c5a4d06",
+                "7850fcab015b71e1"
+            ]
+        ]
+    },
+    {
+        "id": "9c0429cc5c5a4d06",
+        "type": "json",
+        "z": "f363ac65d5f4d104",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 2190,
+        "y": 1000,
+        "wires": [
+            [
+                "7f63ac7751fb5194"
+            ]
+        ]
+    },
+    {
+        "id": "ef38f9f42e91f9a3",
+        "type": "kafkajs-producer",
+        "z": "f363ac65d5f4d104",
+        "d": true,
+        "name": "producer",
+        "client": "631c3112951420ba",
+        "topic": "lis.medical-record.lab-result",
+        "advancedoptions": false,
+        "acknowledge": "all",
+        "partition": "",
+        "headeritems": {},
+        "key": "",
+        "responsetimeout": 30000,
+        "transactiontimeout": 60000,
+        "metadatamaxage": 300000,
+        "allowautotopiccreation": false,
+        "x": 2200,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "7f63ac7751fb5194",
+        "type": "debug",
+        "z": "f363ac65d5f4d104",
+        "name": "freedebug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 2360,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "ef8a0b830e925aea",
+        "type": "change",
+        "z": "f363ac65d5f4d104",
+        "name": "topic:data",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "data",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1380,
+        "y": 1200,
+        "wires": [
+            [
+                "f645ec5a8c45160e"
+            ]
+        ]
+    },
+    {
+        "id": "8269401d.f3814",
+        "type": "serial-port",
+        "serialport": "COM1",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "1",
+        "bin": "bin",
+        "out": "count",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "8c711f6a.8cc4",
+        "type": "config-log",
+        "d": true,
+        "logname": "logserial",
+        "logdir": "/var/log",
+        "stamp": "local",
+        "logstyle": "plain",
+        "logrotate": false,
+        "logcompress": false,
+        "logrotatecount": "5",
+        "logsize": "1000"
+    },
+    {
+        "id": "631c3112951420ba",
+        "type": "kafkajs-client",
+        "d": true,
+        "name": "kafka",
+        "brokers": "172.17.1.57:9092",
+        "clientid": "lis-nodered",
+        "connectiontimeout": "3000",
+        "requesttimeout": "25000",
+        "advancedretry": false,
+        "maxretrytime": "30000",
+        "initialretrytime": "300",
+        "factor": "0.2",
+        "multiplier": "2",
+        "retries": "5",
+        "auth": "none",
+        "tlsselfsign": false,
+        "tlscacert": "",
+        "tlsclientcert": "",
+        "tlsprivatekey": "",
+        "tlspassphrase": "",
+        "saslssl": true,
+        "saslmechanism": "plain",
+        "loglevel": "error"
+    }
+]
