@@ -1,5 +1,7 @@
 # Clinical-Chemistry-Analyzer
 
+Nodered Flow for get data from Clinical Analyzer and pusblish to kafka
+
 1. Using Nodered
 2. Push Data to Kafka
 
